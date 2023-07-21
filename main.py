@@ -1,5 +1,6 @@
 import hashlib
 import datetime
+from Crypto.Hash import SHA3_256
 
 class Transaction:
     def __init__(self, sender, receiver, amount):
@@ -9,9 +10,10 @@ class Transaction:
         self.timestamp = datetime.datetime.now().isoformat()
 
     def calculate_hash(self):
-        # Calculate the hash for the transaction using SHA-256 algorithm.
+        # Calculate the hash for the transaction using SHA-3 (SHA3_256) algorithm.
         hash_string = self.sender + self.receiver + str(self.amount) + self.timestamp
-        return hashlib.sha256(hash_string.encode()).hexdigest()
+        sha3_hash = SHA3_256.new(hash_string.encode())
+        return sha3_hash.hexdigest()
 
 class Block:
     def __init__(self, index, timestamp, transactions, previous_hash):
