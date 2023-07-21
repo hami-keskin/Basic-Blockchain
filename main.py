@@ -4,6 +4,7 @@ from Crypto.Hash import SHA3_256
 
 class Transaction:
     def __init__(self, sender, receiver, amount):
+        # Initialize a transaction with sender, receiver, amount, and timestamp.
         self.sender = sender
         self.receiver = receiver
         self.amount = amount
@@ -17,6 +18,7 @@ class Transaction:
 
 class Block:
     def __init__(self, index, timestamp, transactions, previous_hash):
+        # Initialize a block with index, timestamp, list of transactions, previous block's hash, and nonce.
         self.index = index
         self.timestamp = timestamp
         self.transactions = transactions
